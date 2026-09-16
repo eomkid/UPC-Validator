@@ -14,9 +14,9 @@ while len(user_upc) != 12 or not user_upc.isdigit():
 
 
 def find_UPC(upc_to_validate):
-    odd_upc_digits = [upc_to_validate[0:13:2]]
-    even_upc_digits = [upc_to_validate[1:13:2]]
-    print(f"{odd_upc_digits} {even_upc_digits}")
+    odd_positioned_upc_digits = [upc_to_validate[0:11:2]]
+    even_positioned_upc_digits = [upc_to_validate[1:11:2]]
+    print(f"{odd_positioned_upc_digits} {even_positioned_upc_digits}")
     return
 
 
