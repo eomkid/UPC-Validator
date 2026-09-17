@@ -13,15 +13,20 @@ user_upc = input("Please the 12-digit UPC you would like validated:\n").strip()
 while len(user_upc) != 12 or not user_upc.isdigit():
     user_upc = input(
         "\nThat input is invalid. \nPlease enter a 12 numerical digit UPC:\n").strip()
-user_upc = list(user_upc)
+
+user_upc = list(map(int, user_upc))
+
 upc_validation_digit = int(user_upc[11])
-print(f"{user_upc}")
-
-# def find_UPC(upc_to_validate, validation_digit: int = upc_validation_digit):
-#     odd_positioned_upc_digits = list([upc_to_validate[0:11:2]])
-#     even_positioned_upc_digits = list([upc_to_validate[1:11:2]])
-#     print(f"Runs")
-#     return
 
 
-# find_UPC(user_upc)
+def find_UPC(upc_to_validate, validation_digit: int = upc_validation_digit):
+    odd_positioned_upc_digits = upc_to_validate[0:11:2]
+    even_positioned_upc_digits = upc_to_validate[1:11:2]
+
+    odd_positioned_tripled = odd_positioned_upc_digits[:]
+    odd_positioned_tripled = [digit * 3 for digit in odd_positioned_tripled]
+    print(f"{odd_positioned_upc_digits} {odd_positioned_tripled}")
+    return
+
+
+find_UPC(user_upc)
