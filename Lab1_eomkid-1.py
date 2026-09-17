@@ -22,10 +22,13 @@ upc_validation_digit = int(user_upc[11])
 def find_UPC(upc_to_validate, validation_digit: int = upc_validation_digit):
     odd_positioned_upc_digits = upc_to_validate[0:11:2]
     even_positioned_upc_digits = upc_to_validate[1:11:2]
-
     odd_positioned_tripled = odd_positioned_upc_digits[:]
+
     odd_positioned_tripled = [digit * 3 for digit in odd_positioned_tripled]
-    print(f"{odd_positioned_upc_digits} {odd_positioned_tripled}")
+    validation_check = sum(odd_positioned_tripled +
+                           even_positioned_upc_digits) % validation_digit
+
+    print(f"{validation_check}")
     return
 
 
