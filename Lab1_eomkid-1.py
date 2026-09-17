@@ -19,7 +19,7 @@ user_upc = list(map(int, user_upc))
 upc_validation_digit = int(user_upc[11])
 
 
-def find_UPC(upc_to_validate, validation_digit: int = upc_validation_digit):
+def find_UPC(upc_to_validate):
     odd_positioned_upc_digits = upc_to_validate[0:11:2]
     even_positioned_upc_digits = upc_to_validate[1:11:2]
     odd_positioned_tripled = odd_positioned_upc_digits[:]
@@ -27,11 +27,12 @@ def find_UPC(upc_to_validate, validation_digit: int = upc_validation_digit):
     odd_positioned_tripled = [digit * 3 for digit in odd_positioned_tripled]
     validation_digit_check = sum(odd_positioned_tripled +
                                  even_positioned_upc_digits) % 10
-    if validation_digit_check == validation_digit or 10 - validation_digit_check == validation_digit:
-        print(f"Valid UPC")
-    else:
-        print("Invalid")
-    return
+
+    return validation_digit_check
 
 
-find_UPC(user_upc)
+calc_digit = find_UPC(user_upc)
+if calc_digit == upc_validation_digit or 10 - calc_digit == upc_validation_digit:
+    print(f"Valid UPC: Good to go")
+else:
+    print("Invalid UPC: Please check that you entered the right UPC and run the program again.")
