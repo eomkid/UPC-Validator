@@ -8,7 +8,8 @@ Date of Creation September 16,2026
 # add all values together the mod 10
 # Result should be 0
 
-user_upc = input("Please the 12-digit UPC you would like validated:\n").strip()
+user_upc = input(
+    "Please enter the 12-digit UPC you would like validated:\n").strip()
 
 while len(user_upc) != 12 or not user_upc.isdigit():
     user_upc = input(
@@ -22,9 +23,8 @@ upc_validation_digit = int(user_upc[11])
 def find_UPC(upc_to_validate):
     odd_positioned_upc_digits = upc_to_validate[0:11:2]
     even_positioned_upc_digits = upc_to_validate[1:11:2]
-    odd_positioned_tripled = odd_positioned_upc_digits[:]
-
     odd_positioned_tripled = [digit * 3 for digit in odd_positioned_tripled]
+
     validation_digit_check = sum(odd_positioned_tripled +
                                  even_positioned_upc_digits) % 10
 
