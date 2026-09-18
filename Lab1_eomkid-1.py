@@ -3,10 +3,6 @@ Created by: Brandon Barrett
 Purpose: To validate 12 digit UPC's
 Date of Creation September 16,2026
 """
-# 036000291452 valid UPC for testing purposes
-# odd positions are to be multipled by 3
-# add all values together the mod 10
-# Result should be 0
 
 user_upc = input(
     "Please enter the 12-digit UPC you would like validated:\n").strip()
